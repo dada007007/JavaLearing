@@ -1,6 +1,4 @@
-package com.itheima.movie;
-
-import java.sql.Array;
+package com.itheima.Oopdemo5;
 
 public class Movie {
     private int[] id = {1, 2, 3};
@@ -9,6 +7,24 @@ public class Movie {
     private String[][] actor = {{"谭卓", "田雨", "田海蓉", "陈明昊"}, {"刘昊然", "彭昱畅"}, {"哈莉·贝瑞", "帕特里克·威尔森"}};
     private int[] price = {30, 40, 20};
 
+    public Movie() {
+    }
+
+    public Movie(int[] id, String[] name, String[] director, String[][] actor, int[] price) {
+        this.id = id;
+        this.name = name;
+        this.director = director;
+        this.actor = actor;
+        this.price = price;
+    }
+
+    public int[] getId() {
+        return id;
+    }
+
+    public void setId(int[] id) {
+        this.id = id;
+    }
 
     public String[] getName() {
         return name;
@@ -41,18 +57,4 @@ public class Movie {
     public void setPrice(int[] price) {
         this.price = price;
     }
-
-    public int[] getId() {
-        return id;
-    }
-
-    public void setId(int[] id) {
-        this.id = id;
-    }
-
-
-    public Movie() {
-    }
-
-
 }

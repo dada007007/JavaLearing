@@ -19,13 +19,18 @@ public class ArrayListTest {
         list.add("人字拖");
         list.add("特级枸杞");
         list.add("枸杞子");
+        System.out.println(list);
 //      System.out.println("请输入您想删除的商品信息： ");
         String commodity = new Scanner(System.in).next();
         System.out.println(list.size());
-        for (int i = 0; i < list.size(); i++) {
-            if(list.contains(commodity))
+        System.out.println(list);
+        for (int i = list.size() - 1; i >= 0; i--) {
+            String ele = list.get(i);
+            if (ele.contains(commodity)){
                 list.remove(i);
+            }
         }
+
 
         System.out.println(list);
 //        list.removeAll(commodity);
