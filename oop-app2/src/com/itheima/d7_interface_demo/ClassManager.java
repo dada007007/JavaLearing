@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ClassManager {
     private ArrayList<Student> students = new ArrayList<>();
-    private StudentOperator studentOperator = new StudentOperatorImpl1();
+    private StudentOperator studentOperator = new StudentOperatorImpl2();
 
     public ClassManager(){
         students.add(new Student("迪丽热巴",'女',99));
