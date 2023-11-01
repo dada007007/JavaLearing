@@ -1,5 +1,7 @@
 package com.itheima.d8_generics;
 
+import com.itheima.d6_enum.C;
+
 import java.util.ArrayList;
 
 public class Test1 {
@@ -27,6 +29,8 @@ public class Test1 {
             String e = list1.get(i);
             System.out.println(e);
         }
+
+
 
     }
 }
