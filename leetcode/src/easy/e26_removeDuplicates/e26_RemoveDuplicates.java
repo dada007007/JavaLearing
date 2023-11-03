@@ -26,7 +26,7 @@ public class e26_RemoveDuplicates {
         }
         int[] nums2 = new int[nums.length - count];
 
-        return
+        return 0;
     }
 
 }

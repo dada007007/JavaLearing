@@ -7,6 +7,6 @@ package easy.e27_removeElement;
 */
 public class e27_RemoveElement {
     public int removeElement(int[] nums, int val) {
-
+        return 0;
     }
 }
