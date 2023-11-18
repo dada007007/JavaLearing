@@ -1,0 +1,7 @@
+a我6
+ (
+                // 1、创建一个文件字符输入流管道与源文件接通
+                Reader fr = new FileReader("day06-io-thread\\src\\dlei01.txt");
+                ) {
+            // 2、每次读取一个字符 ： public int read(): 每次读取一个字符编号，没有字符可读返回-1
+            int c; // 每次记住字符的。
