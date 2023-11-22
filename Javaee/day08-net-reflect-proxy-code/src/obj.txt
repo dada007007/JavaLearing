@@ -1,0 +1,8 @@
+===========Employee==========
+name=赵凯
+age=22
+skill=Java，前端
+sex=男
+height=190.5
+cardId=003197
+salary=16000.0
