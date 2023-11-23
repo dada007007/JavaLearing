@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    div {
+        width: 10%;
+
+    }
+
+    .div1 {
+        width: 50%;
+        margin: 0 25%;
+    }
+
+    .reset {
+        border: none;
+        border-radius: 20%;
+    }
+
+    .submit {
+        background-color: #05cc95;
+        border: none;
+        border-radius: 20%;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form action="" method="post">
+            姓名<input type="text" name="请输入客户姓名" id="" value="请输入客户姓名"><br><br>
+            手机<input type="password" name="请输入手机号" id="" value="请输入手机号"><br><br>
+            性别<label><input type="radio" name="sex" id="男">男</label>
+            <label><input type="radio" name="sex" id="女">女</label>
+            <label><input type="radio" name="sex" id="未知">未知</label><br><br>
+            年龄<input type="number" name="请输入年龄" id="" value="请输入年龄"><br><br>
+            QQ<input type="email" name="" id="" value="请输入QQ"><br><br>
+            学科<select name="degree">
+                <option value="">----------- 请选择意向学科 -----------</option>
+                <option value="1">java</option>
+                <option value="2">前端</option>
+                <option value="3">大数据</option>
+                <option value="4">测试</option>
+                <option value="5">python</option>
+                <option value="6">go</option>
+            </select> <br><br>
+            渠道<select name="degree">
+                <option value="">----------- 请选择渠道来源 -----------</option>
+                <option value="1">线上活动</option>
+                <option value="2">推广介绍</option>
+            </select> <br><br>
+            备注<textarea name="description" cols="10" rows="4" >请输入备注</textarea> <br><br>
+            <div class="div1">
+                <input type="reset" value="重置" class="reset">
+                <input type="submit" value="提交" class="submit"> <br>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
