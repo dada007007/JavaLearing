@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-对象-Array</title>
+</head>
+
+<body>
+    <script>
+        //1. 定义数组
+        //let arr = new Array(1,2,3,4);
+        // let arr = [1,2,3,4];
+        
+        //获取数组中的值，索引从0开始计数
+        // console.log(arr[0]);
+        // console.log(arr[1]);
+
+        //特点: 长度可变 类型可变
+        // let arr = [1,2,3,4];
+        // arr[10] = 50;
+        
+        // arr[9] = "A";
+        // arr[8] = true;
+
+        // console.log(arr);
+
+        // console.log(arr[10]);
+        // console.log(arr[9]);
+        // console.log(arr[8]);
+
+        //2. 数组属性 - length
+        let arr = [1,2,3,4];
+        arr[10] = 50;
+        // for (let i = 0; i < arr.length; i++) {
+        //     console.log(arr[i]);
+        // }
+
+        //3. 数组方法 - forEach , map, push , pop , unshift , shift , splice
+        // arr.forEach(function(e){
+        //     console.log(e);
+        // })
+
+        // let arr2 = arr.map((e) => e = e+10);
+        // console.log(arr2);
+
+        // arr.push(7,8,9);
+        // console.log(arr);
+
+        // arr.pop();
+        // console.log(arr);
+
+        // arr.unshift('A', 'B');
+        // console.log(arr);
+
+        // arr.shift();
+        // console.log(arr);
+
+        //splice: 删除元素
+        arr.splice(2,2);
+        console.log(arr);
+
+    </script>
+</body>
+
+</html>

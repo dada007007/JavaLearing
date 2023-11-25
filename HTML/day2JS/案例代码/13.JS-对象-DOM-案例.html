@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        您好, 支付完成, <span id="time">5</span> 秒之后将自动跳转至 <a href="https://www.jd.com">官网</a> 首页 ~
+    </div>
+
+    <script>
+        //1. 获取时间对应的DOM元素
+        let time = document.querySelector('#time');
+
+        //2. 开启定时器, 每秒将时间往下减一 , 如果时间>0 , 更新DOM元素的内容 ; 如果时间 < 0 , 则跳转页面 ;
+        count = time.innerHTML;
+        let timer = setInterval(() => {
+            count--;
+            if (count > 0) {
+                time.innerHTML = count;
+            } else {
+                clearInterval(timer);
+                location.href = 'https://www.jd.com';
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

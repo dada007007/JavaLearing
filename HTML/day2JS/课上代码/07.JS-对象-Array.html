@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-对象-Array</title>
+</head>
+
+<body>
+    <script>
+        //1. 定义数组
+        let arr = new Array(1, 2, 3, 4);
+        console.log(arr);
+
+        let arr2 = [1, 2, 3, "a", "b"];
+        console.log(arr2);
+        //2. 数组属性 - length
+        let a = arr.length;
+        console.log(a);
+
+        arr[10] = 50;
+        console.log(arr);
+
+        //3. 数组方法 - forEach , map,  push , pop , unshift , shift , splice
+        arr.forEach((e) => {
+            console.log(e);
+        })
+
+        console.log(arr);
+
+        let arr3 = arr.map((e) => e = e + 10);
+        console.log(arr3);
+
+        arr3.push(7,8,9);
+        console.log(arr3);
+
+        arr3.pop();
+        console.log(arr3);
+
+        arr3.unshift("A");
+        console.log(arr3);
+
+        arr3.shift();
+        console.log(arr3);
+
+        arr3.splice(2,4);
+        console.log(arr3);
+
+    </script>
+</body>
+
+</html>

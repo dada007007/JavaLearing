@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-对象-DOM</title>
+</head>
+
+<body>
+    <span id="sid">DOM元素1</span>
+    <span class="txt">DOM元素2</span>
+    <span class="txt">DOM元素3</span>
+
+    <script>
+        let a =document.querySelector('#sid');
+        a.innerHTML="文龙1";
+        
+        let b = document.querySelectorAll('span');
+        b.forEach(e => {
+            e.innerHTML="文龙777";
+        });
+
+
+    </script>
+</body>
+
+</html>

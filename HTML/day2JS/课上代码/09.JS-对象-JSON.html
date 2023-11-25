@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-对象-JSON</title>
+</head>
+
+<body>
+
+
+    <script>
+        //1. 自定义JS对象
+        let stu = {
+            name:"Tom",
+            age:19,
+            gender:'男',
+            sing(){
+                alert("唱歌");
+            }
+        }
+        stu.sing();
+        //2. JSON对象
+        let stustr = '{"name":"Amy","age":19,"gender":"女"}'
+        let stu1 = JSON.parse(stustr);
+        alert(stu1.name);
+        alert(JSON.stringify(stu));
+    </script>
+</body>
+
+</html>
