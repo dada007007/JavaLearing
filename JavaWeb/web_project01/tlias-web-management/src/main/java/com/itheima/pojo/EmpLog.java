@@ -9,9 +9,8 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Dept {
-    private Integer id;
-    private String name;
-    private LocalDateTime updateTime;
-    private LocalDateTime createTime;
+public class EmpLog {
+    private Integer id; //ID
+    private LocalDateTime operateTime; //操作时间
+    private String info; //详细信息
 }
