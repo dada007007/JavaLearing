@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.CustomerMapper">
+    <update id="update">
+        update customer
+        <set>
+            <if test="name!=null and name!=''">
+                name = #{name},
+            </if>
+            <if test="gender!=null">
+                gender = #{gender},
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone = #{phone},
+            </if>
+            age = #{age}, qq = #{qq}, description = #{description}
+            where id = #{id}
+        </set>
+    </update>
+
+
+    <select id="page" resultType="com.itheima.pojo.Customer">
+        select id, name, phone, gender, age, qq, update_time updateTime from customer
+        <where>
+            <if test="gender!=null">
+                gender=#{gender}
+            </if>
+            <if test="phone !=null and phone !=''">
+                and phone =#{phone}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+</mapper>
