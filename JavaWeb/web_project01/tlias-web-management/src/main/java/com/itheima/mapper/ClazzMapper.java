@@ -20,7 +20,7 @@ public interface ClazzMapper {
     /**
      * 查询所有班级
      */
-    @Select("select id, name, room, begin_date, end_date, master_id, subject, create_time, update_time from tlias.clazz")
+    @Select("select id, name, room, begin_date beginDate, end_date endDate, master_id masterId, subject, create_time createTime, update_time updateTime from tlias.clazz")
     List<Clazz> findAll();
 
 

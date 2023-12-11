@@ -6,11 +6,13 @@ import com.itheima.pojo.PageBean;
 import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.net.Inet4Address;
+import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -51,4 +53,45 @@ public class EmpController {
         empService.add(emp);
         return Result.success();
     }
+/*
+    *//**
+     * 批量删除 - 接收参数：数组
+     *//*
+    @DeleteMapping
+    public Result delete(Integer[] ids){
+        log.info("批量删除的id是,{}", Arrays.toString(ids));
+        return Result.success();
+    }
+    */
+
+    /**
+     * 批量删除 - 接收参数：集合
+     */
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("批量删除的id是：{}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
+
+    /**
+     * 根据Id查询员工详细信息-页面回显
+     */
+
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id){
+        log.info("根据ID查询员工详细信息,id:{}",id);
+        Emp emp =  empService.getInfo(id);
+        return Result.success(emp);
+    }
+
+
+
+
+
 }
+
+
+
+

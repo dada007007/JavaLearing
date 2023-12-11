@@ -82,4 +82,18 @@ public class EmpServiceImpl implements EmpService {
 
 
     }
+    @Transactional
+    @Override
+    public void delete(List<Integer> ids) {
+        // 1、批量删除员工的基本信息
+        empMapper.deleteByIds(ids);
+        // 2、批量删除员工工作经历信息
+        empExprMapper.deleteByEmpIds(ids);
+    }
+
+    @Override
+    public Emp getInfo(Integer id) {
+        return empMapper.getInfo(id);
+
+    }
 }
