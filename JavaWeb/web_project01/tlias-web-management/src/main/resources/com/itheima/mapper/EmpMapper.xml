@@ -11,9 +11,9 @@
         </foreach>
     </delete>
     <!--条件查询-->
-<!--    where标签：
-    1、会自动的根据条件是否成立，来动态生成where关键字
-    2、会自动去除多余的or或者and-->
+    <!--    where标签：
+        1、会自动的根据条件是否成立，来动态生成where关键字
+        2、会自动去除多余的or或者and-->
     <select id="list" resultType="com.itheima.pojo.Emp">
         select emp.*,dept.name deptName from emp left join dept on emp.dept_id = dept.id
         <where>
@@ -52,18 +52,66 @@
             <result column="ee_company" property="company"/>
             <result column="ee_job" property="job"/>
         </collection>
-    </resultMap>
-    <!--根据ID查询员工详细信息-->
+    </resultMap>    <!--根据ID查询员工详细信息-->
     <select id="getInfo" resultMap="empResultMap">
         select e.*,
-               ee.id     ee_id,
-               ee.emp_id ee_emp_id,
-               ee.begin ee_begin,
-               ee.end ee_end,
+               ee.id      ee_id,
+               ee.emp_id  ee_emp_id,
+               ee.begin   ee_begin,
+               ee.end     ee_end,
                ee.company ee_company,
-               ee.job ee_job
+               ee.job     ee_job
         from emp e
                  left join emp_expr ee on e.id = ee.emp_id
         where e.id = #{id}
     </select>
+
+
+    <!--根据ID动态更新员工基本信息-->
+    <update id="update">
+        update emp
+        <set>
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="phone != null and phone != ''">phone = #{phone},</if>
+            <if test="job != null">job = #{job},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="image != null and image != ''">image = #{image},</if>
+            <if test="entryDate != null">entry_date = #{entryDate},</if>
+            <if test="deptId != null">dept_id = #{deptId},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--统计各个职位对应的人数-->
+    <select id="getJobData" resultType="java.util.Map">
+        select job,
+               (case job
+                    when 1 then '班主任'
+                    when 2 then '讲师'
+                    when 3 then '学工主管'
+                    when 4 then '教研主管'
+                    when 5 then '咨询师'
+                    else '其他' end) pos,
+               count(*) posCount
+        from emp
+        group by job
+        order by job
+    </select>
+
+    <!--统计员工性别信息-->
+
+    <select id="getGenderData" resultType="java.util.Map">
+
+        select gender,
+               if(gender=1, '男性员工','女性员工') name,
+               count(*) value
+        from emp
+        group by gender;
+    </select>
+
+
 </mapper>

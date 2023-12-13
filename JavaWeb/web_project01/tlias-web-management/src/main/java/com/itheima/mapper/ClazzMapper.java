@@ -1,6 +1,9 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Clazz;
+import com.itheima.pojo.ClazzQueryParam;
+import com.itheima.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -24,4 +27,19 @@ public interface ClazzMapper {
     List<Clazz> findAll();
 
 
+    List<Clazz> page(ClazzQueryParam queryParam);
+
+    @Delete("delete from clazz where id=#{id}")
+    void delete(Integer id);
+
+    @Select("select c.id,c.name,room,begin_date beginDate," +
+            "end_date endDate,c.master_id masterId," +
+            " e.name masterName,subject," +
+            "c.create_time createTime, c.update_time updateTime" +
+            " from clazz c left join emp e on c.master_id=e.id " +
+            "where c.id = #{id}")
+    Clazz getById(Integer id);
+
+
+    void update(Clazz clazz);
 }

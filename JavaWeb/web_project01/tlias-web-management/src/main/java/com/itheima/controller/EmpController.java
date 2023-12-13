@@ -1,9 +1,6 @@
 package com.itheima.controller;
 
-import com.itheima.pojo.Emp;
-import com.itheima.pojo.EmpQueryParam;
-import com.itheima.pojo.PageBean;
-import com.itheima.pojo.Result;
+import com.itheima.pojo.*;
 import com.itheima.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
@@ -47,6 +44,9 @@ public class EmpController {
         return Result.success(pageBean);
     }
 
+    /**
+     * 新增员工
+     */
     @PostMapping
     public Result add(@RequestBody Emp emp) throws Exception {
         log.info("新增员工： {}", emp);
@@ -86,6 +86,22 @@ public class EmpController {
         return Result.success(emp);
     }
 
+    /**
+     * 修改员工信息
+     */
+
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        log.info(" 修改部门 " + emp);
+        empService.update(emp);
+        return Result.success();
+    }
+
+    @GetMapping("/list")
+    public Result getAll(){
+        List<Emp> empList = empService.list();
+        return Result.success(empList);
+    }
 
 
 
