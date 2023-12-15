@@ -18,13 +18,15 @@ public class StuServiceImpl implements StuService {
     @Autowired
     private StuMapper stuMapper;
 
-
+    /**
+     * 分页查询
+     */
     @Override
     public PageBean page(StuQueryParam stuQueryParam) {
-        PageHelper.startPage(stuQueryParam.getPage(),stuQueryParam.getPageSize());
+        PageHelper.startPage(stuQueryParam.getPage(), stuQueryParam.getPageSize());
         List<Stu> stuList = stuMapper.page(stuQueryParam);
         Page<Stu> p = (Page<Stu>) stuList;
-        return new PageBean(p.getTotal(),p.getResult());
+        return new PageBean(p.getTotal(), p.getResult());
 
     }
 
@@ -55,8 +57,16 @@ public class StuServiceImpl implements StuService {
         stuMapper.update(stu);
     }
 
+    /**
+     * 扣分如果超过了数据库violation_score的数值限制，
+     * 再抛个异常
+     */
     @Override
     public void updateViolation(Integer id, Integer score) {
-        stuMapper.updateViolation(id,score);
+        Integer violationScore = stuMapper.findById(id).getViolationScore();
+        if (score + violationScore > 255) {
+            throw new NumberFormatException("扣分超过数据限制");
+        }
+        stuMapper.updateViolation(id, score);
     }
 }

@@ -3,21 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.mapper.StuMapper">
+
+    <!--条件分页查询，根据名字、学历及班级名称查询-->
     <select id="page" resultType="com.itheima.pojo.Stu">
-        select s.*,ifnull(c.name,'暂未分配班级') clazzName from student s left join clazz c on s.clazzId=c.id
+        select s.*,ifnull(c.name,'暂未分配班级') clazzName from student s left join clazz c on s.clazz_id=c.id
         <where>
             <if test="name!=null and name!=''">
-                s.name like concat('%',#{name},'%')
+                and s.name like concat('%',#{name},'%')
             </if>
             <if test="degree!=null">
                 and degree=#{degree}
             </if>
             <if test="clazzId!=null">
-                and clazzId=#{clazzId}
+                and clazz_id=#{clazzId}
             </if>
         </where>
         order by s.update_time desc
     </select>
+
     <!-- 根据ID批量删除学生数据   -->
     <delete id="deleteByIds">
         delete from student where id in
@@ -25,6 +28,7 @@
             #{id}
         </foreach>
     </delete>
+
     <!--根据ID查询学生信息-->
     <select id="findById" resultType="com.itheima.pojo.Stu">
         select s.id,
@@ -32,19 +36,21 @@
                no,
                gender,
                phone,
-               idCard,
-               isCollege,
+               id_card         idCard,
+               is_college      isCollege,
                address,
                degree,
                graduation_date graduationDate,
-               clazzId,
-               violationCount,
-               violationScore,
-               s.create_time     createTime,
-               s.update_time     updateTime
-        from student s left join clazz c on s.clazzId=c.id
+               clazz_id        clazzId,
+               violation_count violationCount,
+               violation_score violationScore,
+               s.create_time   createTime,
+               s.update_time   updateTime
+        from student s
+                 left join clazz c on s.clazz_id = c.id
         where s.id = #{id}
     </select>
+
     <!--根据ID动态更新学生信息-->
     <update id="update">
         update student
@@ -53,24 +59,26 @@
             <if test="no != null and no != ''">no = #{no},</if>
             <if test="gender != null">gender = #{gender},</if>
             <if test="phone != null and phone != ''">phone = #{phone},</if>
-            <if test="idCard != null and idCard != ''">idCard = #{idCard},</if>
-            <if test="isCollege != null">isCollege = #{isCollege},</if>
+            <if test="idCard != null and idCard != ''">id_card = #{idCard},</if>
+            <if test="isCollege != null">is_college = #{isCollege},</if>
             <if test="address != null and address!=''">address = #{address},</if>
             <if test="degree != null">degree = #{degree},</if>
             <if test="graduationDate != null">graduation_date = #{graduationDate},</if>
-            <if test="clazzId != null">clazzId = #{clazzId},</if>
-            <if test="violationCount != null">violationCount = #{violationCount},</if>
-            <if test="violationScore != null">violationScore = #{violationScore},</if>
+            <if test="clazzId != null">clazz_id = #{clazzId},</if>
+            <if test="violationCount != null">violation_count = #{violationCount},</if>
+            <if test="violationScore != null">violation_score = #{violationScore},</if>
             <if test="updateTime != null">update_time = #{updateTime},</if>
         </set>
         where id = #{id}
     </update>
+
+    <!--更新违纪次数以及违纪分数-->
     <update id="updateViolation">
         update student
         <set>
             <if test="score != null">
-                violationCount =violationCount+ 1,
-                violationScore = violationScore+#{score},
+                violation_count =violation_count+ 1,
+                violation_score = violation_score+#{score}
             </if>
         </set>
         where id = #{id}
@@ -85,7 +93,7 @@
                     when 3 then '大专'
                     when 4 then '本科'
                     when 5 then '硕士'
-                    else '其他' end) name,
+                    else '博士' end) name,
                count(*)              value
         from student
         group by degree;
@@ -93,10 +101,11 @@
 
     <!--统计各个班级对应的人数-->
     <select id="getCountData" resultType="java.util.Map">
-        select c.name   clazzname,
-               count(*) clazzCount
+        select ifnull(c.name, '暂无分配班级') clazzName,
+               count(*)                       clazzCount
         from student s
-                 left join clazz c on s.clazzId = c.id
+                 join clazz c on s.clazz_id = c.id
         group by c.id
     </select>
+
 </mapper>

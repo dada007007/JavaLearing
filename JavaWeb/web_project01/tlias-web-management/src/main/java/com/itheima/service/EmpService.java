@@ -18,4 +18,9 @@ public interface EmpService {
     void update(Emp emp);
 
     List<Emp> list();
+
+    /**
+     * 员工登录
+     */
+    Emp login(Emp emp);
 }

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.mapper.EmpMapper">
+
     <!-- 根据ID批量删除员工数据   -->
     <delete id="deleteByIds">
         delete from emp where id in
@@ -10,6 +11,7 @@
             #{id}
         </foreach>
     </delete>
+
     <!--条件查询-->
     <!--    where标签：
         1、会自动的根据条件是否成立，来动态生成where关键字
@@ -29,6 +31,7 @@
         </where>
         order by emp.update_time desc
     </select>
+
     <!--resultMap手动封装-->
     <resultMap id="empResultMap" type="com.itheima.pojo.Emp">
         <id column="id" property="id"/>
@@ -52,7 +55,9 @@
             <result column="ee_company" property="company"/>
             <result column="ee_job" property="job"/>
         </collection>
-    </resultMap>    <!--根据ID查询员工详细信息-->
+    </resultMap>
+
+    <!--根据ID查询员工详细信息-->
     <select id="getInfo" resultMap="empResultMap">
         select e.*,
                ee.id      ee_id,
@@ -96,22 +101,20 @@
                     when 4 then '教研主管'
                     when 5 then '咨询师'
                     else '其他' end) pos,
-               count(*) posCount
+               count(*)              posCount
         from emp
         group by job
         order by job
     </select>
 
     <!--统计员工性别信息-->
-
     <select id="getGenderData" resultType="java.util.Map">
 
         select gender,
-               if(gender=1, '男性员工','女性员工') name,
-               count(*) value
+               if(gender = 1, '男性员工', '女性员工') name,
+               count(*)                               value
         from emp
         group by gender;
     </select>
-
 
 </mapper>

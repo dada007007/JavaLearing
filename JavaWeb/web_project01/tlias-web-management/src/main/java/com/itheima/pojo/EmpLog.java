@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
+//员工日志
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -129,4 +129,9 @@ public class EmpServiceImpl implements EmpService {
     public List<Emp> list() {
         return empMapper.findAll();
     }
+
+    @Override
+    public Emp login(Emp emp) {
+        return empMapper.getByUsernameAndPassword(emp);
+    }
 }

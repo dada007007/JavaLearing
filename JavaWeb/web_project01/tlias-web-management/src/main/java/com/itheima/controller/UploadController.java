@@ -35,14 +35,15 @@ public class UploadController {
 
     @Autowired
     private AliyunOSSProperties aliyunOSSProperties;
+
     /**
      * 阿里云OSS
      */
     @PostMapping("/upload")
     public Result upload(MultipartFile file) throws Exception {
-        log.info("文件上传,上传的文件名:{}",file.getOriginalFilename());
+        log.info("文件上传,上传的文件名:{}", file.getOriginalFilename());
         String extName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-        String url =  AliyunOSSUtils.upload(aliyunOSSProperties.getEndpoint(), aliyunOSSProperties.getBucketname(),file.getBytes(),extName);
+        String url = AliyunOSSUtils.upload(aliyunOSSProperties.getEndpoint(), aliyunOSSProperties.getBucketname(), file.getBytes(), extName);
         return Result.success(url);
     }
 }

@@ -48,7 +48,7 @@ public class ReportServiceImpl implements ReportService {
     public StuNum getCountData() {
         List<Map> stuData = stuMapper.getCountData();
         List<Object> clazzList = stuData.stream().map(map -> {
-            return map.get("clazzname");
+            return map.get("clazzName");
         }).toList();
         List<Object> dataList = stuData.stream().map(map -> {
             return map.get("clazzCount");
