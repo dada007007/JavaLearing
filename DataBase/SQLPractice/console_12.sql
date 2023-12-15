@@ -1,0 +1,1 @@
+insert into emp_expr(emp_id, begin, end, company, job) VALUES

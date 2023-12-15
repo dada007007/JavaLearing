@@ -1,0 +1,1 @@
+select e.*,d.name from emp e left join dept d on e.dept_id = d.id;
