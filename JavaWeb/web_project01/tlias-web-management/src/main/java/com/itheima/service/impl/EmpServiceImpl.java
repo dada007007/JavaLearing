@@ -7,16 +7,18 @@ import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.*;
 import com.itheima.service.EmpLogService;
 import com.itheima.service.EmpService;
-import org.apache.ibatis.annotations.Mapper;
+import com.itheima.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -131,7 +133,20 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
-    public Emp login(Emp emp) {
-        return empMapper.getByUsernameAndPassword(emp);
+    public LogInfo login(Emp emp) {
+        // 1、调用mapper方法查询数据库
+        Emp e = empMapper.getByUsernameAndPassword(emp);
+        //2、判断
+        if (e != null) {
+            Map<String,Object> claims = new HashMap<>();
+            claims.put("id",e.getId());
+            claims.put("username",e.getUsername());
+            claims.put("name",e.getName());
+            String jwt = JwtUtils.generateJwt(claims);
+            // 登陆成功，返回LogInfo
+            return new LogInfo(e.getId(),e.getUsername(),e.getName(),jwt);
+        }
+        // 登陆失败，返回null
+        return null;
     }
 }
