@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
@@ -59,6 +60,7 @@ public class DeptController {
      * <p>
      * 场景：前端传递参数名与controller方法形参一致
      */
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam(name = "id", required = false) Integer id) {
         log.info("被删除的部门id是：" + id);
@@ -70,6 +72,7 @@ public class DeptController {
      * 新增部门
      * {"name":"..." }
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("新增部门" + dept);
@@ -80,6 +83,7 @@ public class DeptController {
     /**
      *  页面回显，id查询部门
      */
+
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("根据id查询部门：" + id);
@@ -90,6 +94,7 @@ public class DeptController {
     /**
      * 修改部门
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Dept dept) {
         log.info(" 修改部门 " + dept);

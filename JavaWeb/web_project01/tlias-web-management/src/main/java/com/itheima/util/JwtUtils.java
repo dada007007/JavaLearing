@@ -15,7 +15,6 @@ public class JwtUtils {
     /**
      * 生成JWT令牌
      *
-     * @return
      */
     public static String generateJwt(Map<String,Object> claims){
         String jwt = Jwts.builder()

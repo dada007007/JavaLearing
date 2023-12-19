@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.*;
 import com.itheima.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
@@ -47,6 +48,7 @@ public class EmpController {
     /**
      * 新增员工
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Emp emp) throws Exception {
         log.info("新增员工： {}", emp);
@@ -67,6 +69,7 @@ public class EmpController {
     /**
      * 批量删除 - 接收参数：集合
      */
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids){
         log.info("批量删除的id是：{}", ids);
@@ -89,7 +92,7 @@ public class EmpController {
     /**
      * 修改员工信息
      */
-
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp){
         log.info(" 修改部门 " + emp);
