@@ -25,7 +25,7 @@ public class LoginLogAspect {
     @Autowired
     private LoginLogMapper loginLogMapper;
 
-    @Around("@annotation(com.itheima.anno.Log)")
+    @Around("execution(* com.itheima.controller.LoginController.login(..))")
     public Object recordLog(ProceedingJoinPoint pjp) throws Throwable {
         //用户名在原始方法执行时的参数中:方法运行的参数
         Object[] args = pjp.getArgs();
