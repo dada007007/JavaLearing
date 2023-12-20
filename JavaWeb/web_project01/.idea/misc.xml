@@ -24,6 +24,8 @@
         <option value="$PROJECT_DIR$/springboot-aop-quickstart/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-web-config/pom.xml" />
         <option value="$PROJECT_DIR$/itheima-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/tlias-pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/tlias-util/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

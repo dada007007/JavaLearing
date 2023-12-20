@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="tlias-util" />
         <module name="tlias-web-management" />
         <module name="springboot-aop-quickstart" />
-        <module name="springboot-web-config" />
         <module name="itheima-utils" />
+        <module name="tlias-pojo" />
+        <module name="springboot-web-config" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="21">
@@ -30,6 +32,8 @@
       <module name="springboot-web-quickstart" target="21" />
       <module name="springboot-web-quickstart1" target="21" />
       <module name="springboot_web_quickstart" target="17" />
+      <module name="tlias-util (1)" target="21" />
+      <module name="tlias-util (2)" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

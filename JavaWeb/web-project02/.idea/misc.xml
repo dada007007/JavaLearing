@@ -4,10 +4,11 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/tlias-web-management/pom.xml" />
-        <option value="$PROJECT_DIR$/tlias-pojo/pom.xml" />
         <option value="$PROJECT_DIR$/tlias-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/tlias-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/tlias-pojo/pom.xml" />
         <option value="$PROJECT_DIR$/tlias-util/pom.xml" />
+        <option value="$PROJECT_DIR$/tlias-web-management/pom.xml" />
       </list>
     </option>
   </component>
