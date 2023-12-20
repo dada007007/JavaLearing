@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业3</title>
+</head>
+
+
+<body>
+    <!--3 将模型数据和视图进行绑定-->
+    <div id="app">
+        <!-- 展示模型数据 -->
+        <p>输入的姓 名是：{{user.name}}</p>
+        <p>输入的年 龄是：{{user.age}}</p>
+        <p>选择的性 别是：{{user.gender}}</p>
+        <p>选择的爱 好是：{{user.hobby}}</p>
+        
+        <hr>
+        
+        <form action="" >
+            姓名:<input type="text" v-model="user.name"><br><br>
+
+
+            年龄:<input type="text" v-model="user.age"><br><br>
+
+
+            性别:<input type="radio" value="man" v-model="user.gender">男
+                <input type="radio" value="woman"  v-model="user.gender">女<br><br>
+                
+            爱好:<input type="checkbox" value="sing" v-model="user.hobby" >唱
+                <input type="checkbox" value="dance"   v-model="user.hobby">跳
+                <input type="checkbox" value="basketball"  v-model="user.hobby">篮球<br><br>
+                
+                <input type="button" id="btn" value="保存" @click="save">
+        </form>
+    </div>
+
+
+  <script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    createApp({
+      data() {
+        return {
+           user: {
+               name: '',
+               age: '',
+               gender: '',
+               hobby: []
+           }
+        }
+      },
+      methods:{
+        save(){
+            alert(JSON.stringify(this.user))}
+
+      }
+    }).mount('#app')
+  </script>
+</script>
+
+
+</body>
+</html>

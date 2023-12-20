@@ -8,10 +8,7 @@
 <body>
   
   <div id="app">
-    <p>张无忌</p>
-    <p>张三丰</p>
-    <p>韦一笑</p>
-    <p>殷天正</p>
+    <p v-for="(name, i) in names" :key="i">{{name}}</p>
   </div>
   
   <script type="module">
@@ -19,7 +16,7 @@
     createApp({
       data(){
         return {
-          name: ['张无忌', '张三丰', '韦一笑', '殷天正']
+          names: ['张无忌', '张三丰', '韦一笑', '殷天正']
         }
       }
     }).mount('#app')
