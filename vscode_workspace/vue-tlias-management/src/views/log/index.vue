@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <img src="../../assets/index.png"/>
+  日志信息统计
 </template>
 
 <style scoped>

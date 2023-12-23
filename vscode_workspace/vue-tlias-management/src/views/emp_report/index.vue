@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <img src="../../assets/index.png"/>
+  员工信息统计
 </template>
 
 <style scoped>

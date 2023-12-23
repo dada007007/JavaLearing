@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <img src="../../assets/index.png"/>
+  学员信息统计
 </template>
 
 <style scoped>

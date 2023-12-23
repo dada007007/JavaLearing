@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+// import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,8 +8,8 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/layout/index.vue'),
-      redirect: '/index',
-      children: [
+      redirect:'/index' ,//重定向路径
+      children: [//嵌套路径
         {
           path: 'index',
           name: 'index',
@@ -33,9 +34,25 @@ const router = createRouter({
           path: 'stu',
           name: 'stu',
           component: () => import('../views/stu/index.vue') //学员管理
+        },
+        {
+          path: 'empReport',
+          name: 'empReport',
+          component: () => import('../views/emp_report/index.vue') //员工信息统计
+        },
+        {
+          path: 'stuReport',
+          name: 'stuReport',
+          component: () => import('../views/stu_report/index.vue') //学员信息统计
+        },
+        {
+          path: 'log',
+          name: 'log',
+          component: () => import('../views/log/index.vue') //日志统计
         }
       ]
-    }
+    },
+
   ]
 })
 
